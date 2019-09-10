@@ -1,15 +1,16 @@
 <template>
 	<div class="index">
-		<div class="header"><div class="search" @click="toSearch('')">
-			<div class="ser">
-				<span class="icon"></span>
-				<span>搜索,共239款好物</span>
-			</div>
-		</div>
-		<div class="notice" @click="showKefu">
-			<!--<span>客服</span>-->
-			<img src="/static/images/robot.png"/>
-		</div>
+		<search></search>
+<!--		<div class="header"><div class="search" @click="toSearch('')">-->
+<!--			<div class="ser">-->
+<!--				<span class="icon"></span>-->
+<!--				<span>搜索</span>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--		<div class="notice" @click="showKefu">-->
+<!--			&lt;!&ndash;<span>客服</span>&ndash;&gt;-->
+<!--			<img src="/static/images/robot.png"/>-->
+<!--		</div>-->
 		<!-- 这里做一个tab页 -->
 		<div class="channel">
 			<ul>
@@ -154,12 +155,12 @@
 	</div>
 </template>
 <script>
-//import amapFile from "../../utils/amap-wx ";
 import {get, baseUrl} from "../../utils";
 import {mapState, mapMutations} from "vuex";
 import {
     toLogin
   } from '../../utils';
+import search from "../../components/search";
 export default {
 	onShow() {
 		// 获取首页数据
@@ -195,7 +196,9 @@ export default {
 			kefuShow: false,
 		};
 	},
-	components: {},
+	components: {
+		"search":search
+	},
 	methods: {
 		...mapMutations(["update"]),
 		toMappage() {
