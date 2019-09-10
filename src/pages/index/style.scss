@@ -198,7 +198,7 @@
       margin-top: 20rpx;
       height: 260rpx;
       width: 100%;
-      background: url('../../../static/images/bgnew.png') no-repeat;
+      background: url("'baseUrl' + static/images/bgnew.png") no-repeat;
       background-size: 100% 100%;
       text-align: center;
       display: flex;
@@ -296,7 +296,7 @@
 
   .hotgoods {
     .newgoods-top {
-      background: url('../../../static/images/bgtopic.png') no-repeat;
+      background: url("'baseUrl' + static/images/bgtopic.png") no-repeat;
       background-size: 100% 100%;
 
       .top {
@@ -338,7 +338,7 @@
         width: 32rpx;
         height: 32rpx;
         margin-left: 5rpx;
-        background: url('../../../static//images/right.png') no-repeat;
+        background: url("'baseUrl' + static/images/right.png") no-repeat;
         background-size: 100% 100%;
         vertical-align: middle;
       }
@@ -475,7 +475,7 @@
           display: inline-block;
           width: 70rpx;
           height: 70rpx;
-          background: url('../../../static/images/rightbig.png') no-repeat;
+          background: url("'baseUrl' + static/images/rightbig.png") no-repeat;
           background-size: 100% 100%;
           margin-top: 60rpx;
         }

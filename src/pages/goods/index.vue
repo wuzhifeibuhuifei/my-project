@@ -45,7 +45,7 @@
       </div>
     </div>
     <div v-if="goods_desc" class="detail">
-      <wxParse :content="goods_desc" />
+
     </div>
     <!-- 常见问题 -->
     <div class="common-problem">
@@ -143,8 +143,7 @@
 </template>
 
 <script>
-import { get, post, toLogin, login, getStorageOpenid } from "../../utils";
-import wxParse from "mpvue-wxparse";
+import { get, post, toLogin, login, getStorageOpenid, baseUrl } from "../../utils";
 
 export default {
   onShow() {
@@ -192,7 +191,6 @@ export default {
     };
   },
   components: {
-    wxParse
   },
   methods: {
     togoodsDetail(id) {
@@ -373,6 +371,5 @@ export default {
 };
 </script>
 <style lang='scss' scoped>
-@import url("~mpvue-wxparse/src/wxParse.css");
 @import "./style.scss";
 </style>

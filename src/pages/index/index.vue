@@ -132,7 +132,7 @@
 							</div>
 					</div>
 					<div style="width: 50%;float: left;">
-						<img style="width: 200rpx;height: 200rpx;float: right;margin: 10rpx 24rpx 10rpx 10rpx;" src="/static/images/linfei_wechat(1).png" @longpress="clickLong2">
+						<img style="width: 200rpx;height: 200rpx;float: right;margin: 10rpx 24rpx 10rpx 10rpx;" src="'baseUrl' + static/images/linfei_wechat(1).png" @longpress="clickLong2">
 							<div style="float: left;text-align: center;">
 								<p style="font-size:25rpx;color:#ba3537;">客服2号：Fairylin91</p>
 								<p style="font-size:25rpx;color:#ba3537;">批发或代理</p>
@@ -155,7 +155,7 @@
 </template>
 <script>
 //import amapFile from "../../utils/amap-wx ";
-import {get} from "../../utils";
+import {get, baseUrl} from "../../utils";
 import {mapState, mapMutations} from "vuex";
 import {
     toLogin
