@@ -3,9 +3,9 @@
         <view class="search-form round">
             <text class="cuIcon-search"><span></span></text>
             <view class="search-header">
-                <view>搜索产品名称</view>
+                <view v-show="isSearch">搜索产品名称</view>
                 <form action="">
-                    <input maxlength="140" step="" onfocus="clearText" autocomplete="off" type="search">
+                    <input v-model="message" maxlength="140" step="" @focus="clearText" @blur="outText" autocomplete="off" type="search">
                 </form>
             </view>
         </view>
@@ -20,12 +20,20 @@
         name: "search",
         data() {
             return {
-
+                "isSearch": true,
+                "message": ""
             }
         },
         methods: {
             clearText() {
-                console.log(11111111)
+                if (!this.message) {
+                    this.isSearch = false
+                }
+            },
+            outText() {
+                if (!this.message) {
+                    this.isSearch = true
+                }
             }
         }
     }
