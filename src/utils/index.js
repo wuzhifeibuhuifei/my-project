@@ -37,8 +37,8 @@ function toastOk(msg) {
     });
 }
 
-const host = 'https://www.bipin.store';
-
+// const host = 'https://www.bipin.store';
+const host = 'http://127.0.0.1:8080';
 
 //请求封装
 function request(url, method, data, header = {}) {
@@ -153,6 +153,18 @@ function getOpenid() {
     });
 }
 
+/**
+ * 跳转到index页面，并保留之前的页面
+ * @param index
+ */
+function toPage(index) {
+    uni.navigateTo({
+        url: index,
+        animationType: 'pop-in',
+        animationDuration: 200
+    });
+}
+
 module.exports = {
     baseUrl: "../",
     formatNumber,
@@ -162,5 +174,7 @@ module.exports = {
     get,
     toLogin,
     getStorageOpenid,
-    getOpenid
+    getOpenid,
+    toPage,
+    login
 }

@@ -33,7 +33,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        padding: 200 rpx 0;
+        padding: 200rpx 0;
         box-sizing: border-box;
     }
 
@@ -46,7 +46,7 @@
         background: none;
         padding: 0;
         font-weight: normal;
-        font-size: 32 rpx;
+        font-size: 32rpx;
         box-sizing: content-box;
     }
 
@@ -56,7 +56,7 @@
 
     view,
     text {
-        font-size: 28 rpx;
+        font-size: 28rpx;
         color: #333;
     }
 

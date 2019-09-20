@@ -2,38 +2,38 @@
   overflow: hidden;
 
   .swiper {
-    width: 750 rpx;
-    height: 750 rpx;
+    width: 750rpx;
+    height: 750rpx;
     position: relative;
 
     .swiper-container {
-      width: 750 rpx;
-      height: 750 rpx;
+      width: 750rpx;
+      height: 750rpx;
 
       image {
-        width: 750 rpx;
-        height: 750 rpx;
+        width: 750rpx;
+        height: 750rpx;
       }
     }
 
     .share {
       position: absolute;
-      border-radius: 40 rpx 0 0 40 rpx;
-      width: 150 rpx;
-      height: 65 rpx;
-      line-height: 65 rpx;
+      border-radius: 40rpx 0 0 40rpx;
+      width: 150rpx;
+      height: 65rpx;
+      line-height: 65rpx;
       text-align: center;
       right: 0;
-      top: 50 rpx;
+      top: 50rpx;
       background: #e0a354;
       color: #fff;
-      font-size: 24 rpx;
+      font-size: 24rpx;
     }
   }
 
   .swiper-b {
-    width: 710 rpx;
-    height: 73 rpx;
+    width: 710rpx;
+    height: 73rpx;
     margin: 0 auto;
     background: #f4f4f4; // padding: 0 31.25rpx;
     display: flex;
@@ -42,21 +42,21 @@
 
     div {
       background: url('http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/servicePolicyRed-518d32d74b.png') 0 center no-repeat;
-      background-size: 10 rpx;
-      padding-left: 15 rpx;
+      background-size: 10rpx;
+      padding-left: 15rpx;
       display: flex;
       align-items: center;
-      font-size: 25 rpx;
+      font-size: 25rpx;
       color: #666;
     }
   }
 
   .goods-info {
-    width: 750 rpx;
-    height: 306 rpx;
+    width: 750rpx;
+    height: 306rpx;
     background: #fff;
     margin: 0 auto;
-    border-bottom: 1 rpx solid #f4f4f4;
+    border-bottom: 1rpx solid #f4f4f4;
 
     .c {
       height: 100%;
@@ -67,73 +67,73 @@
       }
 
       p:nth-child(1) {
-        font-size: 41 rpx;
-        padding: 20 rpx;
+        font-size: 41rpx;
+        padding: 20rpx;
       }
 
       p:nth-child(2) {
-        margin-bottom: 25 rpx;
-        font-size: 24 rpx;
+        margin-bottom: 25rpx;
+        font-size: 24rpx;
         color: #999;
       }
 
       p:nth-child(3) {
-        margin-top: 10 rpx;
-        font-size: 35 rpx;
+        margin-top: 10rpx;
+        font-size: 35rpx;
         color: #b4282d;
       }
 
       .brand {
-        margin-top: 25 rpx;
+        margin-top: 25rpx;
         text-align: center;
 
         p {
           display: inline-block;
           color: #b1a279;
-          font-size: 20 rpx;
-          padding: 5 rpx 30 rpx;
-          border: 1 rpx solid #b1a279;
+          font-size: 20rpx;
+          padding: 5rpx 30rpx;
+          border: 1rpx solid #b1a279;
         }
       }
     }
   }
 
   .section-nav {
-    height: 108 rpx;
+    height: 108rpx;
     background: #fff;
-    margin-bottom: 20 rpx;
-    padding: 0 20 rpx;
+    margin-bottom: 20rpx;
+    padding: 0 20rpx;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     div:nth-child(2) {
-      width: 52 rpx;
-      height: 52 rpx;
+      width: 52rpx;
+      height: 52rpx;
       background: url("'baseUrl' + static/images/address_right.png") no-repeat;
       background-size: 100% 100%;
     }
   }
 
   .attribute {
-    padding: 20 rpx 30 rpx;
+    padding: 20rpx 30rpx;
     background: #fff;
-    margin-bottom: 20 rpx;
+    margin-bottom: 20rpx;
 
     .head {
-      font-size: 38 rpx;
-      padding: 20 rpx 0;
+      font-size: 38rpx;
+      padding: 20rpx 0;
     }
 
     .item {
       display: flex;
       background: #f7f7f7;
-      padding: 20 rpx 0;
-      margin: 20 rpx;
+      padding: 20rpx 0;
+      margin: 20rpx;
 
       div:nth-child(1) {
-        width: 134 rpx;
-        font-size: 25 rpx;
+        width: 134rpx;
+        font-size: 25rpx;
         color: #999;
       }
 
@@ -146,11 +146,20 @@
     }
   }
 
+
+  .parse-html {
+    width: 100%;
+
+    div:first-child {
+      width: 100% !important;
+    }
+  }
+
   .common-problem {
-    margin-bottom: 110 rpx;
+    margin-bottom: 110rpx;
 
     .h {
-      padding: 35 rpx 0;
+      padding: 35rpx 0;
       background: #fff;
       text-align: center;
       display: flex;
@@ -159,49 +168,49 @@
 
       .line {
         display: inline-block;
-        height: 1 rpx;
-        width: 100 rpx;
+        height: 1rpx;
+        width: 100rpx;
         background: #ccc;
       }
 
       .title {
-        padding: 0 25 rpx;
+        padding: 0 25rpx;
         background: #fff;
       }
     }
 
     .b {
-      padding: 0 rpx 30 rpx;
+      padding: 0rpx 30rpx;
       background: #fff;
 
       .item {
-        padding-bottom: 25 rpx;
+        padding-bottom: 25rpx;
 
         .question-box {
           display: flex;
 
           .spot {
-            height: 8 rpx;
-            width: 8 rpx;
+            height: 8rpx;
+            width: 8rpx;
             background: #b4282d;
             border-radius: 50%;
-            margin-top: 11 rpx;
+            margin-top: 11rpx;
           }
 
           .question {
-            line-height: 30 rpx;
-            padding-left: 8 rpx;
+            line-height: 30rpx;
+            padding-left: 8rpx;
             display: block;
-            font-size: 26 rpx;
-            padding-bottom: 15 rpx;
+            font-size: 26rpx;
+            padding-bottom: 15rpx;
             color: #303030;
           }
         }
 
         .answer {
-          line-height: 40 rpx;
-          padding-left: 16 rpx;
-          font-size: 26 rpx;
+          line-height: 40rpx;
+          padding-left: 16rpx;
+          font-size: 26rpx;
           color: #787878;
         }
       }
@@ -211,24 +220,24 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      width: 730 rpx;
+      width: 730rpx;
       margin: 0 auto;
 
       div {
-        width: 360 rpx;
+        width: 360rpx;
         background: #fff;
-        margin-bottom: 10 rpx;
-        padding-bottom: 10 rpx;
+        margin-bottom: 10rpx;
+        padding-bottom: 10rpx;
 
         img {
           display: block;
-          width: 302 rpx;
-          height: 302 rpx;
+          width: 302rpx;
+          height: 302rpx;
           margin: 0 auto;
         }
 
         p {
-          margin-bottom: 5 rpx;
+          margin-bottom: 5rpx;
           text-indent: 1em;
         }
 
@@ -246,8 +255,8 @@
 
       .last {
         display: block;
-        width: 302 rpx;
-        height: 302 rpx;
+        width: 302rpx;
+        height: 302rpx;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
@@ -256,26 +265,26 @@
         flex-wrap: wrap;
 
         p {
-          height: 33 rpx;
+          height: 33rpx;
           width: 100%;
-          line-height: 33 rpx;
+          line-height: 33rpx;
           color: #333;
-          font-size: 33 rpx;
+          font-size: 33rpx;
           text-align: center;
         }
 
         .icon {
           display: inline-block;
-          width: 70 rpx;
-          height: 70 rpx;
+          width: 70rpx;
+          height: 70rpx;
           background: url("'baseUrl' + static/images/rightbig.png") no-repeat;
           background-size: 100% 100%;
-          margin-top: 60 rpx;
+          margin-top: 60rpx;
         }
       }
 
       div:nth-child(2n) {
-        margin-left: 10 rpx;
+        margin-left: 10rpx;
       }
     }
   }
@@ -292,35 +301,35 @@
   .attr-pop {
     position: fixed;
     width: 100%;
-    height: 500 rpx;
+    height: 500rpx;
     bottom: -500rpx;
     transition: all 400ms ease;
     box-sizing: border-box;
-    padding: 30 rpx;
+    padding: 30rpx;
     background: #fff;
 
     .top {
       display: flex;
-      margin-bottom: 35 rpx;
+      margin-bottom: 35rpx;
       position: relative;
 
       .close {
         position: absolute;
         right: 0;
         top: 0px;
-        font-size: 30 rpx;
+        font-size: 30rpx;
         color: #999;
       }
 
       .left {
-        height: 177 rpx;
-        width: 177 rpx;
-        margin-right: 30 rpx;
+        height: 177rpx;
+        width: 177rpx;
+        margin-right: 30rpx;
 
         img {
           float: left;
-          height: 177 rpx;
-          width: 177 rpx;
+          height: 177rpx;
+          width: 177rpx;
         }
       }
 
@@ -331,7 +340,7 @@
 
         p {
           width: 100%;
-          line-height: 45 rpx;
+          line-height: 45rpx;
         }
 
         p:nth-child(1) {
@@ -342,15 +351,15 @@
 
     .b {
       .count {
-        width: 322 rpx;
-        height: 71 rpx;
-        line-height: 71 rpx;
+        width: 322rpx;
+        height: 71rpx;
+        line-height: 71rpx;
         display: flex;
-        border: 1 rpx solid #ccc;
-        margin-top: 20 rpx;
+        border: 1rpx solid #ccc;
+        margin-top: 20rpx;
 
         div {
-          width: 90 rpx;
+          width: 90rpx;
           text-align: center;
         }
 
@@ -358,8 +367,8 @@
           flex: 1;
           height: 100%;
           text-align: center;
-          border-left: 1 rpx solid #ccc;
-          border-right: 1 rpx solid #ccc;
+          border-left: 1rpx solid #ccc;
+          border-right: 1rpx solid #ccc;
         }
       }
     }
@@ -374,24 +383,24 @@
     bottom: 0;
     left: 0;
     right: 0;
-    width: 750 rpx;
-    height: 100 rpx;
+    width: 750rpx;
+    height: 100rpx;
     display: flex;
     background: #fff;
     z-index: 10;
 
     .home_btn {
-      height: 100 rpx;
+      height: 100rpx;
       width: 50%;
-      border: 1 rpx solid #f4f4f4;
+      border: 1rpx solid #f4f4f4;
       display: flex;
       align-items: center;
       justify-content: center;
 
       div {
         display: block;
-        height: 44 rpx;
-        width: 44 rpx;
+        height: 44rpx;
+        width: 44rpx;
         background: url("'baseUrl' + static/images/home.png") no-repeat;
         background-size: 100% 100%;
         border: none;
@@ -399,17 +408,17 @@
     }
 
     div:nth-child(2) {
-      height: 100 rpx;
+      height: 100rpx;
       width: 50%;
-      border: 1 rpx solid #f4f4f4;
+      border: 1rpx solid #f4f4f4;
       display: flex;
       align-items: center;
       justify-content: center;
 
       .collect {
         display: block;
-        height: 44 rpx;
-        width: 44 rpx;
+        height: 44rpx;
+        width: 44rpx;
         background: url("'baseUrl' + static/images/icon_collect.png") no-repeat;
         background-size: 100% 100%;
         border: none;
@@ -417,8 +426,8 @@
 
       .collect.active {
         display: block;
-        height: 44 rpx;
-        width: 44 rpx;
+        height: 44rpx;
+        width: 44rpx;
         background: url("'baseUrl' + static/images/icon_collect_checked.png") no-repeat;
         background-size: 100% 100%;
         border: none;
@@ -426,21 +435,21 @@
     }
 
     div:nth-child(4) {
-      height: 100 rpx;
-      line-height: 96 rpx;
+      height: 100rpx;
+      line-height: 96rpx;
       flex: 1;
       text-align: center;
       color: #333;
-      border-top: 1 rpx solid #f4f4f4;
-      border-bottom: 1 rpx solid #f4f4f4;
+      border-top: 1rpx solid #f4f4f4;
+      border-bottom: 1rpx solid #f4f4f4;
     }
 
     div:nth-child(5) {
-      border: 1 rpx solid #b4282d;
+      border: 1rpx solid #b4282d;
       background: #b4282d;
       float: left;
-      height: 100 rpx;
-      line-height: 96 rpx;
+      height: 100rpx;
+      line-height: 96rpx;
       flex: 1;
       text-align: center;
       color: #fff;

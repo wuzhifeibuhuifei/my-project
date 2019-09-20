@@ -1,39 +1,47 @@
 <template>
-    <view class="cu-bar search bg-white">
-        <view class="search-form round">
-            <text class="cuIcon-search"><span></span></text>
-            <view class="search-header">
-                <view v-show="isSearch">搜索产品名称</view>
-                <form action="">
-                    <input v-model="message" maxlength="140" step="" @focus="clearText" @blur="outText" autocomplete="off" type="search">
-                </form>
+    <view class='nav'>
+        <!-- #ifdef H5 -->
+        <view style="height: 44px;width: 100%;">边距盒子</view>
+        <!-- #endif -->
+        <!-- 搜索 -->
+        <view class='searchInput999'>
+            <view class='searchBox999'>
+                <image src='/static/images/icon-search.png' class='search999'></image>
             </view>
+            <input class='input999' placeholder="输入关键词"></input>
         </view>
-        <view class="action">
-            <button class="cu-btn bg-green shadow-blur round">搜索</button>
-        </view>
+        <!-- 导航栏 agents导航栏标题 -->
+        <navTab ref="navTab" :tabTitle="tabTitle" @changeTab='changeTab'></navTab>
     </view>
 </template>
 
 <script>
+    import navTab from './navTab.vue'
     export default {
+        components: {
+            navTab
+        },
         name: "search",
         data() {
             return {
-                "isSearch": true,
-                "message": ""
+
+            }
+        },
+        props: {
+            tabTitle: {
+                type: Array,
+                default: []
             }
         },
         methods: {
-            clearText() {
-                if (!this.message) {
-                    this.isSearch = false
-                }
+            changeTab(index){
+                this.$emit('changeTab', index)
             },
-            outText() {
-                if (!this.message) {
-                    this.isSearch = true
-                }
+            navClick(index) {
+                this.$refs.navTab.navClick(index)
+            },
+            longClick(index) {
+                this.$refs.navTab.longClick(index)
             }
         }
     }
@@ -55,4 +63,47 @@
         width:100%;
     }
 
+    .nav {
+        position: fixed;
+        left: 0;
+        top: 0;
+        color: white;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        font-size: 24rpx;
+        background-color: #50B7EA;
+        z-index: 996;
+    }
+
+    .searchInput999 {
+        width: 90%;
+        margin: 0 auto;
+        background: white;
+        border-radius: 30rpx;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 56rpx;
+    }
+
+    .search999 {
+        width: 32rpx;
+        height: 32rpx;
+    }
+
+    .searchBox999 {
+        width: 56rpx;
+        height: 56rpx;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .input999 {
+        color: #999;
+        width: 80%;
+    }
 </style>
