@@ -1,6 +1,9 @@
 <template>
-    <div class="container999">
-        <search ref="search" @changeTab='changeTab' :tabTitle="tabTitle"></search>
+    <div class="container999" @touchstart="refreshStart" @touchmove="refreshMove" @touchend="refreshEnd">
+        <!-- 刷新事件isRefresh需要异步操作返回resolve -->
+        <refresh ref="refresh" @isRefresh='isRefresh'></refresh>
+
+        <search ref="search" @changeTab='changeTab' @queryKeyword="toSearch" :tabTitle="tabTitle"></search>
 
         <!-- swiper切换 swiper-item表示一页 scroll-view表示滚动视窗 -->
         <swiper style="min-height: 100vh;" :current="currentTab" @change="swiperTab">
@@ -8,11 +11,9 @@
             <swiper-item>
                 <scroll-view style="height: 100%;" scroll-y="true" @scrolltolower="lower1" scroll-with-animation
                              :scroll-into-view="toView">
-                    <view :id="top0" style="width: 100%;height: 160rpx;">边距盒子</view>
-                    <view class='content'>
-                        <headerPage></headerPage>
+                    <view class="content">
+                        <headerPage ref="headerPage"></headerPage>
                     </view>
-                    <view style="width: 100%;height: 100rpx;opacity:0;">底部占位盒子</view>
                 </scroll-view>
             </swiper-item>
 
@@ -20,31 +21,16 @@
             <swiper-item>
                 <scroll-view style="height: 100%;" scroll-y="true" @scrolltolower="lower1" scroll-with-animation
                              :scroll-into-view="toView">
-                    <view :id="top1" style="width: 100%;height: 160rpx;">边距盒子</view>
-                    <view class='content'>
-                        <CategoryPage></CategoryPage>
+                    <view class="content">
+                        <categoryPage ref="categoryPage"></categoryPage>
                     </view>
-                    <view style="width: 100%;height: 100upx;opacity:0;">底部占位盒子</view>
                 </scroll-view>
             </swiper-item>
         </swiper>
 
-
-        <div class="content-head"></div>
-        <!--    </div>-->
-        <keep-alive>
-            <div v-show="isActive=='home'" class="container-content">
-
-            </div>
-            <div v-show="isActive=='menu'" class="container-content">
-
-            </div>
-        </keep-alive>
-
         <!--弹窗-->
-        <div class="modal-mask" @click="onConfirm()" catchtouchmove="preventTouchMove" v-if="kefuShow"></div>
-        <!--        <div class="modal-dialog" v-if="kefuShow">-->
-
+        <!-- <div class="modal-mask" @click="onConfirm()" catchtouchmove="preventTouchMove" v-if="kefuShow"></div> -->
+        <!--        <div class="modal-dialog" v-if="kefuShow"> -->
         <!--            &lt;!&ndash; <div class="modal-title">温馨提示</div>&ndash;&gt;-->
         <!--            <div class="modal-content">-->
         <!--                <div class="modal-input">-->
@@ -68,9 +54,7 @@
         <!--                        </div>-->
         <!--                    </div>-->
         <!--                    <div style="clear: both;">-->
-
         <!--                    </div>-->
-
         <!--                    &lt;!&ndash;<div style="height: 200rpx;"><p style="font-size: 30rpx; color: red;">欢迎加客服微信咨询或者购买</p><button class="save-btn" @click="saveImage()">保存图片</button></div>&ndash;&gt;-->
         <!--                </div>-->
         <!--            </div>-->
@@ -83,15 +67,17 @@
 </template>
 <script>
     const util = require('../../utils/util.js');
-    import {get, baseUrl, toLogin} from "../../utils";
-    import {mapState, mapMutations} from "vuex";
+    import {toPage, toLogin} from "../../utils/index";
+    import * as request from '../../api/config'
     import search from "../../components/search";
     import headerPage from "../../components/headerPage";
     import categoryPage from "../../components/categoryPage";
+    import refresh from "../../components/refresh";
+
 
     export default {
         components: {
-            search, headerPage, categoryPage
+            search, headerPage, categoryPage, refresh
         },
         onShow() {
         },
@@ -127,9 +113,7 @@
                 list: [[1, 2, 3, 4, 5, 6], ['a', 'b', 'c', 'd', 'e', 'f']] //数据格式
             };
         },
-
         methods: {
-            ...mapMutations(["update"]),
             changeTab(index) {
                 this.currentTab = index
             },
@@ -157,95 +141,48 @@
                 //     this.$forceUpdate() //二维数组，开启强制渲染
                 // })
             }, 300),
-            toMappage() {
-                var _this = this;
-                // 可以通过 wx.getSetting 先查询一下用户是否授权了 "scope.record" 这个 scope
-                // wx.getSetting({
-                //   success(res) {
-                //     //如果没有同意授权,打开设置
-                //     if (!res.authSetting["scope.userLocation"]) {
-                //       wx.openSetting({
-                //         success: res => {
-                //           _this.getCityName();
-                //         }
-                //       });
-                //     } else {
-                //       wx.navigateTo({
-                //         url: "/pages/mappage/main"
-                //       });
-                //     }
-                //   }
-                // });
-            },
-            getCityName() {
-                var _this = this;
-                // var myAmapFun = new amapFile.AMapWX({
-                //   key: "e545e7f79a643f23aef187add14e4548"
-                // });
-                // myAmapFun.getRegeo({
-                //   success: function (data) {
-                //     //成功回调
-                //     console.log(data);
-                //     // data[0].regeocodeData.formatted_address
-                //     // _this.cityName = data[0].regeocodeData.formatted_address;
-                //     _this.update({ cityName: data[0].regeocodeData.formatted_address });
-                //   },
-                //   fail: function (info) {
-                //     //失败回调
-                //     console.log(info);
-                //     //如果用户拒绝授权
-                //     // 默认为北京
-                //     _this.cityName = "北京市";
-                //     _this.update({ cityName: "北京市" });
-                //   }
-                // });
-                _this.cityName = "北京市";
-            },
             toSearch(categoryId) {
-                console.log(categoryId);
-                wx.navigateTo({
-                    url: "/pages/search/main?categoryId=" + categoryId
-                });
+                toPage(request.goodsCategoryList(categoryId))
             },
             goodsDetail(id) {
                 wx.navigateTo({
-                    url: "/pages/goods/main?id=" + id
+                    url: "/pages/goods/index?id=" + id
                 });
             },
             categoryList(id) {
                 wx.navigateTo({
-                    url: "/pages/categorylist/main?id=" + id
+                    url: "/pages/categorylist/index?id=" + id
                 });
             },
             goodsList(info) {
                 if (info == "hot") {
                     wx.navigateTo({
-                        url: "/pages/newgoods/main?isHot=" + 1
+                        url: "/pages/newgoods/index?isHot=" + 1
                     });
                 } else {
                     wx.navigateTo({
-                        url: "/pages/newgoods/main?isNew=" + 1
+                        url: "/pages/newgoods/index?isNew=" + 1
                     });
                 }
             },
             topicdetail(id) {
                 wx.navigateTo({
-                    url: "/pages/topicdetail/main?id=" + id
+                    url: "/pages/topicdetail/index?id=" + id
                 });
             },
             totopic() {
                 wx.navigateTo({
-                    url: "/pages/topic/main"
+                    url: "/pages/topic/index"
                 });
             },
             tobrandList() {
                 wx.navigateTo({
-                    url: "/pages/brandlist/main"
+                    url: "/pages/brandlist/index"
                 });
             },
             branddetail(id) {
                 wx.navigateTo({
-                    url: "/pages/branddetail/main?id=" + id
+                    url: "/pages/branddetail/index?id=" + id
                 });
             },
             qh(e) {
@@ -257,6 +194,28 @@
             },
             onConfirm() {
                 this.kefuShow = false;
+            },
+            // 刷新touch监听
+            refreshStart(e) {
+                this.$refs.refresh.refreshStart(e);
+            },
+            refreshMove(e) {
+                this.$refs.refresh.refreshMove(e);
+            },
+            refreshEnd(e) {
+                this.$refs.refresh.refreshEnd(e);
+            },
+            isRefresh() {
+                let currentTab = this.currentTab;
+                if (currentTab == 0) {
+                    this.$refs.headerPage.getIndexDataNoLoading().then((res) => {
+                        this.$refs.refresh.endAfter();
+                    })
+                } else if (currentTab == 1) {
+                    this.$refs.categoryPage.getListDataNoLoading().then((res) => {
+                        this.$refs.refresh.endAfter();
+                    })
+                }
             },
             clickLong1() {
                 var imgSrc = "/static/images/kefu1.png";

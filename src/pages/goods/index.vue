@@ -4,10 +4,24 @@
             <swiper class="swiper-container" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
                 <block v-for="(item, index) in gallery " :key="index">
                     <swiper-item class="swiper-item">
-                        <image :src="item.picUrl2" class="slide-image"/>
+                        <!--                        <image :src="item.picUrl2" class="slide-image"/>-->
+                        <scroll-view :scroll-y="true" @scroll="scroll" id="scroll">
+                            <view class='item'>
+                                <v-lazyLoad :src="'https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1563915113,300493152&fm=58'"
+                                            mode="widthFix"></v-lazyLoad>
+                            </view>
+                        </scroll-view>
                     </swiper-item>
                 </block>
             </swiper>
+<!--            <scroll-view :scroll-y="true" @scroll="scroll" id="scroll">-->
+<!--                <view class='item'>-->
+<!--                    <v-lazyLoad :src="gallery[0].picUrl2"-->
+<!--                                mode="widthFix"></v-lazyLoad>-->
+<!--                </view>-->
+<!--            </scroll-view>-->
+
+
             <button class="share" hover-class="none" open-type="share" value="">分享商品</button>
         </div>
         <div class="goods-info">
@@ -40,28 +54,28 @@
             </div>
         </div>
         <div v-if="goods_desc" class="detail">
-          <rich-text class="parse-html" :nodes="goods_desc"></rich-text>
-<!--            <u-parse :content="detailData" :loading="loading" @preview="preview" @navigate="navigate" />-->
+            <rich-text class="parse-html" :nodes="goods_desc"></rich-text>
+            <!--            <u-parse :content="detailData" :loading="loading" @preview="preview" @navigate="navigate" />-->
         </div>
         <!-- 常见问题 -->
-        <div class="common-problem">
-            <div class="h">
-                <div class="line"></div>
-                <text class="title">常见问题</text>
-                <div class="line"></div>
-            </div>
-            <div class="b">
-                <div class="item" v-for="(item, index) in issueList" :key="index">
-                    <div class="question-box">
-                        <text class="spot"></text>
-                        <text class="question">{{item.question}}</text>
-                    </div>
-                    <div class="answer">
-                        {{item.answer}}
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!--        <div class="common-problem">-->
+        <!--            <div class="h">-->
+        <!--                <div class="line"></div>-->
+        <!--                <text class="title">常见问题</text>-->
+        <!--                <div class="line"></div>-->
+        <!--            </div>-->
+        <!--            <div class="b">-->
+        <!--                <div class="item" v-for="(item, index) in issueList" :key="index">-->
+        <!--                    <div class="question-box">-->
+        <!--                        <text class="spot"></text>-->
+        <!--                        <text class="question">{{item.question}}</text>-->
+        <!--                    </div>-->
+        <!--                    <div class="answer">-->
+        <!--                        {{item.answer}}-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
         <!-- 常见问题 -->
         <!-- 大家都在看 -->
 
@@ -130,6 +144,8 @@
 <script>
     import {get, post, toLogin, login, getStorageOpenid, baseUrl} from "../../utils/index";
     import * as request from '../../api/config';
+    import VLazyLoad from "../../components/lazyLoad/index.vue";
+    import lazyLoadPlugin from '../../plugins/lazyLoad/js/lazyLoad.js'
 
     export default {
         onShow() {
@@ -142,7 +158,6 @@
             this.goodsDetail(id);
             // 添加足迹
             this.addFootHistory(id);
-
         },
         created() {
 
@@ -177,16 +192,22 @@
                 userInfo: "",
                 goodsId: "",
                 allPrise: "",
-                loading:false,//开启loading不显示默认值
+                loading: false,//开启loading不显示默认值
             };
         },
-        components: {},
+        components: {
+            VLazyLoad,
+        },
         methods: {
             preview(src, e) {
                 // do something
             },
             navigate(href, e) {
                 // do something
+            },
+            scroll() {
+                // 监听scroll事件
+                lazyLoadPlugin.scroll();
             },
             togoodsDetail(id) {
                 wx.redirectTo({url: "/pages/goods/index?id=" + id});

@@ -29,7 +29,7 @@
 </template>
 
 <script>
-    import {baseUrl, get} from "../utils/index";
+    import {baseUrl, get, getNoLoading} from "../utils/index";
     import * as request from "../api/config";
 
     export default {
@@ -49,6 +49,16 @@
             async getListData() {
                 let _this = this;
                 const data = await get(request.categoryData);
+                // 给默认值
+                if (data != null && data.length > 0) {
+                    _this.categoryTwoList = data[0].categoryList;
+                    _this.categoryTitle = data[0].name;
+                    _this.listData = data;
+                }
+            },
+            async getListDataNoLoading() {
+                let _this = this;
+                const data = await getNoLoading(request.categoryData);
                 // 给默认值
                 if (data != null && data.length > 0) {
                     _this.categoryTwoList = data[0].categoryList;

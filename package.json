@@ -31,7 +31,7 @@
     "@dcloudio/uni-mp-baidu": "*",
     "@dcloudio/uni-mp-qq": "*",
     "@dcloudio/uni-mp-toutiao": "*",
-    "@dcloudio/uni-mp-weixin": "*",
+    "@dcloudio/uni-mp-weixin": "2.0.0-23320190923002",
     "@dcloudio/uni-stat": "*",
     "flyio": "^0.6.2",
     "node-sass": "4.9.2",

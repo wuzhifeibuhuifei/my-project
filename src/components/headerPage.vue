@@ -59,7 +59,7 @@
 </template>
 
 <script>
-    import {baseUrl, get, toPage} from "../utils/index";
+    import {baseUrl, get, getNoLoading, toPage} from "../utils/index";
     import * as request from "../api/config";
 
     export default {
@@ -91,7 +91,19 @@
                 this.topicList = result.topicList;
                 // 好物精选
                 this.newCategoryList = result.newCategoryList;
-                console.log(result);
+            },
+            async getIndexDataNoLoading() {
+                const result = await getNoLoading(request.indexData);
+                this.banner = result.banner;
+                this.channel = result.channel;
+                // 爆品
+                this.brandList = result.brandList;
+                // 店主推荐
+                this.newGoods = result.newGoods;
+                this.hotGoods = result.hotGoods;
+                this.topicList = result.topicList;
+                // 好物精选
+                this.newCategoryList = result.newCategoryList;
             },
             goodsDetail(id) {
                 toPage(request.goodsDetail(id));

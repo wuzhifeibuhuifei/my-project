@@ -724,10 +724,10 @@
   resolved "https://registry.npm.taobao.org/@dcloudio/uni-mp-toutiao/download/@dcloudio/uni-mp-toutiao-0.0.352.tgz#95a565863348bfc7cceaea869d14b04e940da46c"
   integrity sha1-laVlhjNIv8fM6uqGnRSwTpQNpGw=
 
-"@dcloudio/uni-mp-weixin@*":
-  version "0.0.973"
-  resolved "https://registry.npm.taobao.org/@dcloudio/uni-mp-weixin/download/@dcloudio/uni-mp-weixin-0.0.973.tgz#111e5ca9fa0f1914edca0f690f64f46f0f3a88d8"
-  integrity sha1-ER5cqfoPGRTtyg9pD2T0bw86iNg=
+"@dcloudio/uni-mp-weixin@2.0.0-23320190923002":
+  version "2.0.0-23320190923002"
+  resolved "https://registry.npm.taobao.org/@dcloudio/uni-mp-weixin/download/@dcloudio/uni-mp-weixin-2.0.0-23320190923002.tgz#3cda0745251c449f9762fb049c6a1bf7dd153c76"
+  integrity sha1-PNoHRSUcRJ+XYvsEnGob990VPHY=
 
 "@dcloudio/uni-stat@*":
   version "0.0.113"
@@ -2563,7 +2563,7 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-cross-env@^5.2.0:
+cross-env@^5.2.0, cross-env@^5.2.1:
   version "5.2.1"
   resolved "https://registry.npm.taobao.org/cross-env/download/cross-env-5.2.1.tgz#b2c76c1ca7add66dc874d11798466094f551b34d"
   integrity sha1-ssdsHKet1m3IdNEXmEZglPVRs00=
@@ -8592,3 +8592,8 @@ yargs@^7.0.0:
     which-module "^1.0.0"
     y18n "^3.2.1"
     yargs-parser "^5.0.0"
+
+yarn@^1.17.3:
+  version "1.17.3"
+  resolved "https://registry.npm.taobao.org/yarn/download/yarn-1.17.3.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fyarn%2Fdownload%2Fyarn-1.17.3.tgz#60e0b77d079eb78e753bb616f7592b51b6a9adce"
+  integrity sha1-YOC3fQeet451O7YW91krUbaprc4=

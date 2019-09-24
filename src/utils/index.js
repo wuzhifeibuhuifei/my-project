@@ -68,14 +68,45 @@ function request(url, method, data, header = {}) {
     })
 }
 
+function requestNoLoading(url, method, data, header = {}) {
+    return new Promise((resolve, reject) => {
+        wx.request({
+            url: host + url, //仅为示例，并非真实的接口地址
+            method: method,
+            data: data,
+            header: {
+                'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            success: function (res) {
+                resolve(res.data);
+            },
+            fail: function (error) {
+                reject(false)
+            },
+            complete: function () {
+            }
+        })
+    })
+}
+
 // get请求
 function get(url, data) {
     return request(url, 'GET', data)
 }
 
+// get请求没有load遮罩层
+function getNoLoading(url, data) {
+    return requestNoLoading(url, 'GET', data)
+}
+
 // post请求
 function post(url, data) {
     return request(url, 'POST', data)
+}
+
+// post请求没有load遮罩层
+function postNoLoading(url, data) {
+    return requestNoLoading(url, 'POST', data)
 }
 
 //-------------------------------------------------------------------------请求的封装
@@ -172,6 +203,7 @@ module.exports = {
     toastFail,
     toastOk,
     get,
+    getNoLoading,
     toLogin,
     getStorageOpenid,
     getOpenid,

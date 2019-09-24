@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App'
+import './plugins/lazyLoad/js/config.js'
 
 //全局处理重复页面跳转详情初始化,和详情跳详情返回的bug
 import MyPlugin from './minxins'

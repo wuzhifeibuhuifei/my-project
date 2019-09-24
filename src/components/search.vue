@@ -8,7 +8,7 @@
             <view class='searchBox999'>
                 <image src='/static/images/icon-search.png' class='search999'></image>
             </view>
-            <input class='input999' placeholder="输入关键词"></input>
+            <input class='input999' placeholder="输入关键词" @click="toSearch('')"></input>
         </view>
         <!-- 导航栏 agents导航栏标题 -->
         <navTab ref="navTab" :tabTitle="tabTitle" @changeTab='changeTab'></navTab>
@@ -42,6 +42,9 @@
             },
             longClick(index) {
                 this.$refs.navTab.longClick(index)
+            },
+            toSearch(categoryId) {
+                this.$emit('queryKeyword', categoryId)
             }
         }
     }
