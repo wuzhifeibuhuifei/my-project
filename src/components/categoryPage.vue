@@ -1,5 +1,5 @@
 <template>
-    <div class="index">
+    <div class="index" v-if="loading">
         <keep-alive>
             <div class="category">
                 <div class="content">
@@ -26,6 +26,9 @@
             </div>
         </keep-alive>
     </div>
+    <div v-else>
+
+    </div>
 </template>
 
 <script>
@@ -39,11 +42,14 @@
                 nowIndex: 0,
                 listData: [],
                 categoryTitle: "",
-                categoryTwoList: []
+                categoryTwoList: [],
+                loading: false
             }
         },
         created() {
-            this.getListData();
+            this.getListData().then(res => {
+                this.loading = true
+            })
         },
         methods: {
             async getListData() {
@@ -72,6 +78,9 @@
                 _this.categoryTwoList = item.categoryList;
                 _this.categoryTitle = item.name;
             },
+            toSearch(id) {
+                this.$emit('queryKeyword', id)
+            }
         }
     }
 </script>
@@ -132,7 +141,7 @@
 
                     .iconText {
                         text-align: center;
-                        line-height: 90rpx;
+                        /*line-height: 90rpx;*/
                         width: 162rpx;
                         height: 90rpx;
                         color: #333;

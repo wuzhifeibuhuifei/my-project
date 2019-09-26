@@ -29,18 +29,18 @@
 		methods: {
 			refreshStart(e) {
 				if (this.isEnd == 0 && this.isTop == 1) {
-					this.touchStart = e.changedTouches[0].pageY
+					this.touchStart = e.changedTouches[0].pageY;
 				}
 			},
 			refreshMove(e){
 				if (this.isEnd == 0 && this.isTop == 1) {
 					var touchStart = this.touchStart,
 						oldMove = this.touchMove,
-						newMove = e.changedTouches[0].pageY
+						newMove = e.changedTouches[0].pageY;
 					if (touchStart <= newMove) {
 						var isTranf = touchStart > newMove ? 0 : newMove - touchStart
 						this.isTranf = isTranf
-						this.touchMove = e.changedTouches[0].pageY
+						this.touchMove = e.changedTouches[0].pageY;
 					}
 				} else{
 					this.isTranf = 0

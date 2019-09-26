@@ -12,7 +12,7 @@
                 <scroll-view style="height: 100%;" scroll-y="true" @scrolltolower="lower1" scroll-with-animation
                              :scroll-into-view="toView">
                     <view class="content">
-                        <headerPage ref="headerPage"></headerPage>
+                        <headerPage @queryKeyword="toSearch" ref="headerPage"></headerPage>
                     </view>
                 </scroll-view>
             </swiper-item>
@@ -22,7 +22,7 @@
                 <scroll-view style="height: 100%;" scroll-y="true" @scrolltolower="lower1" scroll-with-animation
                              :scroll-into-view="toView">
                     <view class="content">
-                        <categoryPage ref="categoryPage"></categoryPage>
+                        <categoryPage @queryKeyword="toSearch" ref="categoryPage"></categoryPage>
                     </view>
                 </scroll-view>
             </swiper-item>
@@ -85,9 +85,11 @@
             // ...mapState(["cityName"])
         },
         mounted() {
-
             //获取默认右侧数据
             // this.selectitem(this.id, this.nowIndex);
+        },
+        created() {
+
         },
         data() {
             return {

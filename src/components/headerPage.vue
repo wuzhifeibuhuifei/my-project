@@ -1,6 +1,6 @@
 <!--suppress ALL -->
 <template>
-    <div class="index">
+    <div class="index" v-if="loading">
         <keep-alive>
             <!-- 爆品热销 -->
             <div class="brand">
@@ -56,10 +56,13 @@
             </div>
         </keep-alive>
     </div>
+    <div v-else>
+
+    </div>
 </template>
 
 <script>
-    import {baseUrl, get, getNoLoading, toPage} from "../utils/index";
+    import {get, getNoLoading, toPage} from "../utils/index";
     import * as request from "../api/config";
 
     export default {
@@ -72,11 +75,14 @@
                 newGoods: [],
                 hotGoods: [],
                 topicList: [],
-                newCategoryList: []
+                newCategoryList: [],
+                loading: false
             }
         },
-        created() {
-            this.getIndexData();
+        created () {
+            this.getIndexData().then(res =>{
+                this.loading = true
+            })
         },
         methods: {
             async getIndexData() {
@@ -108,11 +114,14 @@
             goodsDetail(id) {
                 toPage(request.goodsDetail(id));
             },
+            toSearch(id) {
+                this.$emit('queryKeyword', id)
+            }
         }
     }
 </script>
 
-<style lang='scss' scoped>
+<style lang='scss'>
     .index {
         width: 100%;
         overflow: hidden;
@@ -164,7 +173,8 @@
                         height: 210rpx !important;
                         margin: 0 auto;
                         margin-top: 20rpx;
-                        img {
+
+                        image {
                             width: 100%;
                             height: 100%;
                         }
@@ -204,7 +214,7 @@
                 margin-top: 20rpx;
                 height: 260rpx;
                 width: 100%;
-                background: url("'baseUrl' + static/images/bgnew.png") no-repeat;
+                background: url("../static/images/bgnew.png") no-repeat;
                 background-size: 100% 100%;
                 text-align: center;
                 display: flex;
@@ -306,7 +316,7 @@
 
         .hotgoods {
             .newgoods-top {
-                background: url("'baseUrl' + static/images/bgtopic.png") no-repeat;
+                background: url("../static/images/bgtopic.png") no-repeat;
                 background-size: 100% 100%;
 
                 .top {
@@ -349,7 +359,7 @@
                     width: 32rpx;
                     height: 32rpx;
                     margin-left: 5rpx;
-                    background: url("'baseUrl' + static/images/right.png") no-repeat;
+                    background: url("../static/images/right.png") no-repeat;
                     background-size: 100% 100%;
                     vertical-align: middle;
                 }
@@ -486,7 +496,7 @@
                         display: inline-block;
                         width: 70rpx;
                         height: 70rpx;
-                        background: url("'baseUrl' + static/images/rightbig.png") no-repeat;
+                        background: url("../static/images/rightbig.png") no-repeat;
                         background-size: 100% 100%;
                         margin-top: 60rpx;
                     }

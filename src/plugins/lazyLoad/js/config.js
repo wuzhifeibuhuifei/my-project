@@ -1,7 +1,7 @@
 import lazyLoad from './lazyLoad'
 
 lazyLoad.setConfig({
-    loading: {  // 加载完成之前的替代图片或者动画组件
+    loading: {
         type: 'component',
         name: 'loading-1'
     },

@@ -10,30 +10,28 @@
       width: 750rpx;
       height: 750rpx;
 
-      #scroll {
-        height: 100vh; /* 需要给scroll-view设置高度 */
-        background: #f8f8f9;
+      //#scroll {
+      //  height: 100vh; /* 需要给scroll-view设置高度 */
+      //  background: #f8f8f9;
+      //
+      //  .item {
+      //    background: #fff;
+      //    width: fit-content;
+      //    padding: 20px;
+      //    margin: 20px;
+      //    border-radius: 10px;
+      //    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+      //    width: calc(100vw - 80px);
+      //    min-height: 300px;
 
-        .item {
-          background: #fff;
-          width: fit-content;
-          padding: 20px;
-          margin: 20px;
-          border-radius: 10px;
-          box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
-          width: calc(100vw - 80px);
-          min-height: 300px;
-
-          .img-lazyLoad .load-error-img {
-            width: 100px;
+          image {
+            width: 750rpx;
+            height: 750rpx;
           }
-        }
-      }
-
-      //image {
-      //  width: 750rpx;
-      //  height: 750rpx;
+      //  }
       //}
+
+
     }
 
     .share {

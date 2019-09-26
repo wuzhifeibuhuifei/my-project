@@ -130,10 +130,9 @@ export default {
     methods: {
         // 初始化
         $_init () {
-            console.log(this.src);
             this.uuid = this.$_createUUID();
             this.$_setImgType("loading");
-            lazyLoadPlugins.scroll();
+            // lazyLoadPlugins.scroll();
             this.$_registerImg();
         },
 
@@ -151,20 +150,16 @@ export default {
         $_createUUID () {
             let ranStr = Math.random().toString(32).substring(2);
             let timestamp = new Date().getTime();
-
             return "uuid-" + ranStr + timestamp;
         },
 
         // 注册图片对象 ,监听图片加载状态
         $_registerImg () {
-            console.log("11" + this.$refs.loading);
-            console.log("22" + this.uuid);
             lazyLoadPlugins.addImg({
                 ctx: this.$refs.loading,
                 uuid: this.uuid,
                 callback: () => {
                     return new Promise((resolve, reject) => {
-                        console.log("333" + this.imgLoadStart);
                         if (this.imgLoadStart === true) reject();
 
                         this.imgLoadStart = true;
@@ -179,13 +174,12 @@ export default {
 
         // 图片加载完成
         imgLoadSuccess () {
-            console.log('success')
+            console.log("图片加载完成");
             this.imgLoadCommon();
         },
 
         // 图片加载出错
         imgLoadError () {
-            console.log('error')
             this.imgLoadCommon();
             this.$_setImgType("error")
         },
@@ -202,7 +196,6 @@ export default {
 
             let { minLoadAnimeTime: time } = lazyLoadPlugins.getConfig()
 
-            console.log(this.count.nextLoad);
             setTimeout(() => {
                 this.isShowImg = true;
                 this.count.nextLoad++;
@@ -212,7 +205,6 @@ export default {
         // 图片加载间隔(停顿)时间
         $_intervalLoad () {
             let { intervalTime: time } = lazyLoadPlugins.getConfig()
-            console.log("zzzzzzzzz");
             setTimeout(() => {
                 this.imgLoadEnd = true;
             }, time);
@@ -221,7 +213,6 @@ export default {
 
     watch: {
         'count.nextLoad' (val) {
-            console.log("1123123123" + val);
             val === 2 && this.$_intervalLoad();
         }
     },

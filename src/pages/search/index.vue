@@ -153,7 +153,7 @@
                 } else {
                     this.order = "";
                 }
-                this.getlistData(this.categoryId, this.page);
+                this.getlistData(this.categoryId, 1);
             },
             async searchWords(e) {
                 this.saleOrder = '';
@@ -178,7 +178,6 @@
                     let tempList = this.listData;
                     tempList = tempList.concat(res.data.list);
                     this.listData = tempList;
-                    console.log(this.listData);
                     this.$forceUpdate();
                 })
             }, 300)

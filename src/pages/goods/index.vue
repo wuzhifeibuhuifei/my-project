@@ -1,27 +1,18 @@
 <template>
-    <div class="goods">
+    <div class="goods" v-if="loading">
         <div class="swiper">
             <swiper class="swiper-container" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
-                <block v-for="(item, index) in gallery " :key="index">
+                <block v-for="(item, index) in gallery " :key="index1">
                     <swiper-item class="swiper-item">
-                        <!--                        <image :src="item.picUrl2" class="slide-image"/>-->
-                        <scroll-view :scroll-y="true" @scroll="scroll" id="scroll">
-                            <view class='item'>
-                                <v-lazyLoad :src="'https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1563915113,300493152&fm=58'"
-                                            mode="widthFix"></v-lazyLoad>
-                            </view>
-                        </scroll-view>
+                            <img src="item.picUrl2">
+<!--                        <scroll-view :scroll-x="true"-->
+<!--                                     @scroll="scroll"-->
+<!--                                     id="scroll">-->
+<!--                            <v-lazyload ref="lazyload" :src="item.picUrl2" mode="widthFix"></v-lazyload>-->
+<!--                        </scroll-view>-->
                     </swiper-item>
                 </block>
             </swiper>
-<!--            <scroll-view :scroll-y="true" @scroll="scroll" id="scroll">-->
-<!--                <view class='item'>-->
-<!--                    <v-lazyLoad :src="gallery[0].picUrl2"-->
-<!--                                mode="widthFix"></v-lazyLoad>-->
-<!--                </view>-->
-<!--            </scroll-view>-->
-
-
             <button class="share" hover-class="none" open-type="share" value="">分享商品</button>
         </div>
         <div class="goods-info">
@@ -48,14 +39,13 @@
             <div class="head">
                 商品参数
             </div>
-            <div v-for="(item,index) in attribute" :key="index" class="item">
+            <div v-for="(item,index) in attribute" :key="index1" class="item">
                 <div>{{item.name}}</div>
                 <div>{{item.value}}</div>
             </div>
         </div>
         <div v-if="goods_desc" class="detail">
             <rich-text class="parse-html" :nodes="goods_desc"></rich-text>
-            <!--            <u-parse :content="detailData" :loading="loading" @preview="preview" @navigate="navigate" />-->
         </div>
         <!-- 常见问题 -->
         <!--        <div class="common-problem">-->
@@ -139,38 +129,42 @@
 
         <!-- 选择规格部分 -->
     </div>
+    <div v-else>
+
+    </div>
 </template>
 
 <script>
     import {get, post, toLogin, login, getStorageOpenid, baseUrl} from "../../utils/index";
     import * as request from '../../api/config';
-    import VLazyLoad from "../../components/lazyLoad/index.vue";
+    import VLazyload from "../../components/lazyLoad/index.vue";
     import lazyLoadPlugin from '../../plugins/lazyLoad/js/lazyLoad.js'
 
     export default {
-        onShow() {
-            if (login()) {
-                this.loginGoodsDetail(this.$root.$mp.query.id, getStorageOpenid());
-            }
-        },
         onLoad: function (option) {
             let id = option.id;
             this.goodsDetail(id);
             // 添加足迹
             this.addFootHistory(id);
+            if (login()) {
+                this.loginGoodsDetail(id, getStorageOpenid());
+            }
         },
-        created() {
-
+        mounted () {
+            // lazyLoadPlugin.init('#scroll', false)
+            // lazyLoadPlugin.init('#scroll', false, { ctx: this })
+            lazyLoadPlugin.init_x()
+            lazyLoadPlugin.scroll();
+        },
+        destroyed () {
+            // 监听页面卸载
+            lazyLoadPlugin.destroy();
         },
         //商品转发
         onShareAppMessage() {
-            console.log(this.info.name);
-            console.log(this.info.id);
-            console.log(this.gallery[0].picUrl2);
-
             return {
                 title: this.info.name,
-                path: "/pages/goods/main?id=" + this.info.id,
+                path: "/pages/goods/index?id=" + this.info.id,
                 imageUrl: this.gallery[0].picUrl2 //拿第一张商品的图片
             };
         },
@@ -192,21 +186,14 @@
                 userInfo: "",
                 goodsId: "",
                 allPrise: "",
-                loading: false,//开启loading不显示默认值
+                loading: false
             };
         },
         components: {
-            VLazyLoad,
+            VLazyload,
         },
         methods: {
-            preview(src, e) {
-                // do something
-            },
-            navigate(href, e) {
-                // do something
-            },
-            scroll() {
-                // 监听scroll事件
+            scroll () {
                 lazyLoadPlugin.scroll();
             },
             togoodsDetail(id) {
@@ -335,6 +322,8 @@
                 // 商品常见问题
                 this.issueList = data.issue;
                 this.productList = data.productList;
+                // 数据已经就位
+                this.loading = true;
             },
             showType() {
                 this.showpop = !this.showpop;
@@ -347,6 +336,6 @@
         }
     };
 </script>
-<style lang='scss' scoped>
+<style lang='scss'>
     @import "./style.scss";
 </style>

@@ -5,7 +5,20 @@
                      id="scroll">
             <!-- not exists img -->
             <view class='item'>
-                <v-lazyload :src="123"
+                <v-lazyload :src="'../../static/images/avator.png'"
+                            mode="widthFix"></v-lazyload>
+            </view>
+
+            <view v-for="n of 6"
+                  :key="n"
+                  class='item'>
+                <v-lazyload :src="'/static/dog/'+n+'.jpg'"
+                            mode="widthFix"></v-lazyload>
+            </view>
+
+            <!-- not exists img -->
+            <view class='item'>
+                <v-lazyload :src="'/static/dog/1.jpg'"
                             mode="widthFix"></v-lazyload>
             </view>
         </scroll-view>
@@ -13,8 +26,8 @@
 </template>
 
 <script>
-    import VLazyload from "../../components/lazyLoad/index.vue";
-    import lazyLoadPlugin from '../../plugins/lazyLoad/js/lazyLoad.js'
+    import VLazyload from "@/components/lazyLoad/index.vue";
+    import lazyLoadPlugin from '@/plugins/lazyLoad/js/lazyLoad.js'
 
     export default {
         methods: {

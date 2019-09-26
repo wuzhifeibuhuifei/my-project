@@ -25,6 +25,7 @@ class MyLazyLoad {
         _.setScrollId(scrollId);
         let { width, height } = await _.getScrollArgs(scrollId, ctx);
 
+
         if (isHorizontal) {
             _.scroll.w = width;
         } else {
@@ -75,7 +76,6 @@ class MyLazyLoad {
             _.loadImgArr.push(imgArgs)
         } else {
             id = '#' + id;
-
             _.loadImgArr[id] || (_.loadImgArr[id] = [])
             _.loadImgArr[id].push(imgArgs)
         }
@@ -158,6 +158,7 @@ var _ = {
     // 获取 scroll-view 标签的数据
     getScrollArgs (id, ctx) {
         return _.getNodeList(id, ctx).then(res => {
+            console.log("res:" + JSON.stringify(res));
             if (res.length === 0) {
                 _.error("scroll样式id错误或未能获取当前属性");
             }
@@ -195,7 +196,6 @@ var _ = {
             if (await _.loadImgIsComplete(img) === false) break;
             pos++;
         }
-
         _.removeImg(pos);
     },
 
@@ -233,16 +233,16 @@ var _ = {
     checkNeedLoadImgNode (item) {
         return new Promise((resolve, reject) => {
             _.getNodeList('#' + item.uuid, item.ctx).then(res => {
+                console.log("res:" + res);
                 if (res.length === 0) return;
 
                 let [{ top, left }] = res;
 
-                if ((!_.horizontal && top - _.config.preLoadNum <= _.scroll.h) ||
-                    (_.horizontal && left - _.config.preLoadNum <= _.scroll.w)) {
+                // if ((!_.isHorizontal && top - _.config.preLoadNum <= _.scroll.h) ||
+                //     (_.isHorizontal && left - _.config.preLoadNum <= _.scroll.w)) {
                     return resolve()
-                }
-
-                reject();
+                // }
+                // reject();
             })
         })
     },
