@@ -2,7 +2,7 @@
   <div class="collection">
     <div class="title">
       <span>我的足迹</span>
-      <img @click="clearFoot()" src="'baseUrl' + static/images/delete.png" alt>
+      <img @click="clearFoot()" :src="'../../static/images/delete.png'">
     </div>
     <div class="time" v-for="(item, index) in collectlist" :key="index">
       <p>{{item.time}}</p>
@@ -97,7 +97,7 @@ export default {
     },
     goodsDetail(id) {
       wx.navigateTo({
-        url: "/pages/goods/main?id=" + id
+        url: "/pages/goods/index?id=" + id
       });
     }
   },

@@ -19,7 +19,7 @@ export default {
     methods: {
         close() {
             wx.switchTab(
-	    		{url:'../my/main'}
+	    		{url:'../my/index'}
 	    	)
         }
     },

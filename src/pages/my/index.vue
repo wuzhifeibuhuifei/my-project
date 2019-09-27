@@ -56,12 +56,12 @@
           {
             title: "我的足迹",
             icon: "icon-zuji",
-            url: "/pages/foothistory/main"
+            url: "/pages/foothistory/index"
           },
           {
             title: "我的收藏",
             icon: "icon-shoucang",
-            url: "/pages/collectlist/main"
+            url: "/pages/collectlist/index"
           },
 //        {
 //          title: "地址管理",
@@ -81,7 +81,7 @@
           {
             title: "意见反馈",
             icon: "icon-yijianfankui",
-            url: "/pages/feedback/main"
+            url: "/pages/feedback/index"
           },
 //        {
 //          title: "测试页面",
@@ -95,7 +95,7 @@
     methods: {
       goTo(url) {
         if (!this.userInfo.avatarUrl) {
-          url = "/pages/login/main";
+          url = "/pages/login/index";
         }
         wx.navigateTo({
             url: url
@@ -104,7 +104,7 @@
       toLogin() {
         if (!this.userInfo.avatarUrl) {
           wx.navigateTo({
-            url: "/pages/login/main"
+            url: "/pages/login/index"
           });
         }
       }

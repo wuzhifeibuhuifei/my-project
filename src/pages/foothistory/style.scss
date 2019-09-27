@@ -15,7 +15,7 @@
     .time {
       p {
         height:40rpx;
-        padding:10rpx 20rpx;
+        padding:0 20rpx;
         font-size:30rpx;
         color:#adabab;
       }
@@ -73,7 +73,7 @@
           display: inline-block;
           width: 70rpx;
           height: 70rpx;
-          background: url("'baseUrl' + static/images/rightbig.png") no-repeat;
+          background: url("../../static/images/rightbig.png") no-repeat;
           background-size: 100% 100%;
           margin-top: 60rpx;
         }

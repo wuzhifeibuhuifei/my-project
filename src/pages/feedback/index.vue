@@ -50,7 +50,7 @@
         }).then(function(res) {
           if (res.state == 'ok') {
              wx.navigateTo({
-               url: '/pages/feedbackSuccess/main'
+               url: '/pages/feedbackSuccess/index'
              })
           } else {
             wx.showToast({

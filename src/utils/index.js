@@ -37,8 +37,8 @@ function toastOk(msg) {
     });
 }
 
-// const host = 'https://www.bipin.store';
-const host = 'http://127.0.0.1:8080';
+const host = 'https://www.bipin.store';
+// const host = 'http://127.0.0.1:8080';
 
 //请求封装
 function request(url, method, data, header = {}) {
@@ -119,7 +119,7 @@ function toLogin() {
     const userInfo = wx.getStorageSync('userInfo');
     if (!userInfo) {
         wx.navigateTo({
-            url: "/pages/login/main"
+            url: "/pages/login/index"
         });
     } else {
         return true;
@@ -203,6 +203,7 @@ module.exports = {
     toastFail,
     toastOk,
     get,
+    post,
     getNoLoading,
     toLogin,
     getStorageOpenid,

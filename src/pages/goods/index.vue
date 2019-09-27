@@ -2,9 +2,9 @@
     <div class="goods" v-if="loading">
         <div class="swiper">
             <swiper class="swiper-container" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
-                <block v-for="(item, index) in gallery " :key="index1">
+                <block v-for="(item, index) in gallery " :key="index">
                     <swiper-item class="swiper-item">
-                            <img src="item.picUrl2">
+                            <img :src="item.picUrl2">
 <!--                        <scroll-view :scroll-x="true"-->
 <!--                                     @scroll="scroll"-->
 <!--                                     id="scroll">-->
@@ -137,8 +137,6 @@
 <script>
     import {get, post, toLogin, login, getStorageOpenid, baseUrl} from "../../utils/index";
     import * as request from '../../api/config';
-    import VLazyload from "../../components/lazyLoad/index.vue";
-    import lazyLoadPlugin from '../../plugins/lazyLoad/js/lazyLoad.js'
 
     export default {
         onLoad: function (option) {
@@ -153,12 +151,12 @@
         mounted () {
             // lazyLoadPlugin.init('#scroll', false)
             // lazyLoadPlugin.init('#scroll', false, { ctx: this })
-            lazyLoadPlugin.init_x()
-            lazyLoadPlugin.scroll();
+            // lazyLoadPlugin.init_x()
+            // lazyLoadPlugin.scroll();
         },
         destroyed () {
             // 监听页面卸载
-            lazyLoadPlugin.destroy();
+            // lazyLoadPlugin.destroy();
         },
         //商品转发
         onShareAppMessage() {
@@ -190,12 +188,9 @@
             };
         },
         components: {
-            VLazyload,
+            // VLazyload,
         },
         methods: {
-            scroll () {
-                lazyLoadPlugin.scroll();
-            },
             togoodsDetail(id) {
                 wx.redirectTo({url: "/pages/goods/index?id=" + id});
             },

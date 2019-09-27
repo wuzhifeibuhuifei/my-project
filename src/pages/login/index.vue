@@ -13,7 +13,7 @@
     host,
     getOpenid,
     getStorageOpenid
-  } from "../../utils";
+  } from "../../utils/index";
   var qcloud = require("wafer2-client-sdk/index.js");
   export default {
     created() {},
