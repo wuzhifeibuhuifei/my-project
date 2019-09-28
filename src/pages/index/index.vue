@@ -19,10 +19,20 @@
 
             <!-- 分类列表 -->
             <swiper-item>
-                <scroll-view style="height: 100%;" scroll-y="true" @scrolltolower="lower1" scroll-with-animation
+                <scroll-view style="background-color: #fff" scroll-y="true" @scrolltolower="lower1" scroll-with-animation
                              :scroll-into-view="toView">
                     <view class="content">
                         <categoryPage @queryKeyword="toSearch" ref="categoryPage"></categoryPage>
+                    </view>
+                </scroll-view>
+            </swiper-item>
+
+            <!-- 公告页 -->
+            <swiper-item>
+                <scroll-view style="height: 100%;" scroll-y="true" @scrolltolower="lower1" scroll-with-animation
+                             :scroll-into-view="toView">
+                    <view class="content">
+                        <noticePage></noticePage>
                     </view>
                 </scroll-view>
             </swiper-item>
@@ -73,11 +83,12 @@
     import headerPage from "../../components/headerPage";
     import categoryPage from "../../components/categoryPage";
     import refresh from "../../components/refresh";
+    import noticePage from "../../components/noticePage";
 
 
     export default {
         components: {
-            search, headerPage, categoryPage, refresh
+            search, headerPage, categoryPage, refresh, noticePage
         },
         onShow() {
         },
@@ -109,10 +120,9 @@
                 categoryTwoList: [],
                 categoryTitle: "",
                 kefuShow: false,
-                tabTitle: ['首页', '分类'], //导航栏格式 --导航栏组件
+                tabTitle: ['首页', '分类', '公告'], //导航栏格式 --导航栏组件
                 currentTab: 0, //sweiper所在页
                 // pages:[1,1,1,1], //第几个swiper的第几页
-                list: [[1, 2, 3, 4, 5, 6], ['a', 'b', 'c', 'd', 'e', 'f']] //数据格式
             };
         },
         methods: {

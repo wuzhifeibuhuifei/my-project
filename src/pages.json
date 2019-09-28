@@ -3,56 +3,56 @@
     {
       "path": "pages/index/index",
       "style": {
-        "navigationBarTitleText": "首页",
+        "navigationBarTitleText": "",
         "enablePullDownRefresh": true
       }
     },
     {
       "path": "pages/my/index",
       "style": {
-        "navigationBarTitleText": "我的"
+        "navigationBarTitleText": ""
       }
     },
     {
       "path": "pages/foothistory/index",
       "style": {
-        "navigationBarTitleText": "我的足迹"
+        "navigationBarTitleText": ""
       }
     },
     {
       "path": "pages/feedbackSuccess/index",
       "style": {
-        "navigationBarTitleText": "反馈成功"
+        "navigationBarTitleText": ""
       }
     },
     {
       "path": "pages/feedback/index",
       "style": {
-        "navigationBarTitleText": "反馈"
+        "navigationBarTitleText": ""
       }
     },
     {
       "path": "pages/collectlist/index",
       "style": {
-        "navigationBarTitleText": "收藏列表"
+        "navigationBarTitleText": ""
       }
     },
     {
       "path": "pages/search/index",
       "style": {
-        "navigationBarTitleText": "搜索"
+        "navigationBarTitleText": ""
       }
     },
     {
       "path": "pages/goods/index",
       "style": {
-        "navigationBarTitleText": "商品详情"
+        "navigationBarTitleText": ""
       }
     },
     {
       "path": "pages/login/index",
       "style": {
-        "navigationBarTitleText": "登录"
+        "navigationBarTitleText": ""
       }
     }
   ],

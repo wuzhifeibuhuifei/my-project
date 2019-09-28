@@ -5,7 +5,8 @@
                 <div class="content">
                     <scroll-view class="left" scroll-y="true">
                         <div class="iconText" @click="selectitem(item,index)" v-for="(item, index) in listData"
-                             :class="[index==nowIndex?'active':'']" :key="index"> {{item.name}}
+                             :class="[index==nowIndex?'active':'']" :key="index">
+                            {{item.name}}
                         </div>
                     </scroll-view>
                     <scroll-view class="right" scroll-y="true">
@@ -144,9 +145,20 @@
                         /*line-height: 90rpx;*/
                         width: 162rpx;
                         height: 90rpx;
+                        line-height:90rpx;
                         color: #333;
                         font-size: 28rpx;
                         border-left: 6rpx solid #fff;
+
+                        /*span {*/
+                        /*    height:90rpx;*/
+                        /*    line-height:45rpx;*/
+                        /*    display:-webkit-box;*/
+                        /*    overflow:hidden;*/
+                        /*    text-overflow:ellipsis;*/
+                        /*    -webkit-line-clamp:2;*/
+                        /*    -webkit-box-orient:vertical;*/
+                        /*}*/
                     }
 
                     .active {

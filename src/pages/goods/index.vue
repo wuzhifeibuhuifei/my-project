@@ -325,7 +325,7 @@
             },
             toHome() {
                 wx.switchTab(
-                    {url: '../index/main'}
+                    {url: '../index/index'}
                 )
             }
         }
